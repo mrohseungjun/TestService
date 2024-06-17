@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*val serviceIntent = Intent(this, MyService::class.java)
-        startService(serviceIntent)*/
+        val serviceIntent = Intent(this, MyService::class.java)
+        startService(serviceIntent)
     }
 
     override fun onResume() {

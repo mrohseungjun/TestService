@@ -14,10 +14,11 @@ class MyService : Service() {
 
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.e("Service", "Service is started")
         Thread {
             while (true) {
-                Log.e("Service", "Service is running")
-                Log.e("Service", "${count++}")
+                Log.d("Service", "Service is running")
+                Log.d("Service", "${count++}")
                 try {
                     Thread.sleep(1000)
                 } catch (e: Exception) {
@@ -26,6 +27,12 @@ class MyService : Service() {
             }
         }.start()
 
-        return super.onStartCommand(intent, flags, startId)
+        return START_STICKY
+    }
+
+    override fun onDestroy() {
+        Log.e("Service", "Service is destroyed")
+        count = 0
+        super.onDestroy()
     }
 }
